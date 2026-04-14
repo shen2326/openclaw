@@ -1,0 +1,141 @@
+{
+  "id": "memory-enhanced",
+  "kind": "memory",
+  "commandAliases": [
+    {
+      "name": "semantic-linking",
+      "kind": "runtime-slash",
+      "cliCommand": "memory"
+    },
+    {
+      "name": "knowledge-graph", 
+      "kind": "runtime-slash",
+      "cliCommand": "memory"
+    },
+    {
+      "name": "dreaming-enhanced",
+      "kind": "runtime-slash", 
+      "cliCommand": "memory"
+    }
+  ],
+  "uiHints": {
+    "semanticLinking.enabled": {
+      "label": "Semantic Linking",
+      "help": "Enable automatic semantic linking between memory entries"
+    },
+    "knowledgeGraph.enabled": {
+      "label": "Knowledge Graph", 
+      "help": "Enable knowledge graph construction from memory content"
+    },
+    "dreaming.frequency": {
+      "label": "Dreaming Frequency",
+      "placeholder": "0 3 * * *",
+      "help": "Cron schedule for enhanced dreaming (semantic linking + knowledge graph)"
+    }
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "semanticLinking": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          },
+          "threshold": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "default": 0.8
+          },
+          "maxLinksPerEntry": {
+            "type": "integer",
+            "minimum": 1,
+            "default": 5
+          }
+        }
+      },
+      "knowledgeGraph": {
+        "type": "object", 
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          },
+          "entityExtraction": {
+            "type": "string",
+            "enum": ["basic", "advanced"],
+            "default": "basic"
+          }
+        }
+      },
+      "compression": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "daily": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "enabled": {
+                "type": "boolean",
+                "default": true
+              }
+            }
+          },
+          "weekly": {
+            "type": "object",
+            "additionalProperties": false, 
+            "properties": {
+              "enabled": {
+                "type": "boolean",
+                "default": true
+              },
+              "schedule": {
+                "type": "string",
+                "default": "0 20 * * 0"
+              }
+            }
+          },
+          "monthly": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "enabled": {
+                "type": "boolean", 
+                "default": true
+              },
+              "schedule": {
+                "type": "string",
+                "default": "0 2 1 * *"
+              }
+            }
+          }
+        }
+      },
+      "dreaming": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          },
+          "frequency": {
+            "type": "string",
+            "default": "0 3 * * *"
+          },
+          "idleTimeoutMinutes": {
+            "type": "integer",
+            "minimum": 1,
+            "default": 5
+          }
+        }
+      }
+    }
+  }
+}

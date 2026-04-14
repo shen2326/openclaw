@@ -1,0 +1,22 @@
+{
+  "name": "@openclaw/memory-enhanced",
+  "version": "1.0.0",
+  "description": "Advanced knowledge association system for OpenClaw",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "dependencies": {
+    "openclaw": "^2026.4.12"
+  },
+  "peerDependencies": {
+    "openclaw": ">=2026.4.12"
+  },
+  "openclaw": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}
